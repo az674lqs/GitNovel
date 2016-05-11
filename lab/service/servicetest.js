@@ -5,7 +5,7 @@ var cipher = require("./Cipher");
 	end: pass
 	date 2016.05.11 14:00:30  s
 **/
-var algorithm = 'aes192';
+var algorithm = 'aes192'
 var source = 'some clear text data';
 var password = 'a password';
 var format = 'hex';
