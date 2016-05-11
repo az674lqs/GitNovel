@@ -16,7 +16,7 @@ var outlookSmtpConfig = {
 };
 
 var gmailSmtpConfig = {
-    host: 'smtp.gmailSmtpConfig.com',
+    host: 'smtp.gmail.com',
     port: 465,
     //secure: true, // use SSL
     auth: {
