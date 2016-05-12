@@ -2,7 +2,7 @@
 
 + 执行git命令
 + 发送邮件
-+ 进行数据加密
++ 进行数据加密/解密
 + 创建官方邮箱
 + 配置文件
 + 扫描目标文件夹发现更新（git是否已经实现了？？）
@@ -17,6 +17,25 @@ Use the [<b>nodemailer</b>](http://nodemailer.com) package to send email.
 + <b>Doing</b> Implement and test mail helper package, different mail service provider has different setting (port, SSL, token etc.).
 + Give the interface and documents. 
 
+## 进行数据加密/解密
+<b>加密</b>
+
++ 模块： `./service/Cipher.js`
++ 用法：
+
+	```
+var algorithm = 'aes192'
+var content = 'some clear text data';
+var password = 'a password';
+var format = 'hex';
+var encrypted = cipher.cipherHelper(algorithm,content,password,format);
+console.log("encrypted: " + encrypted);
+	```
++ 参数：
+	1. algorithm: 加密算法，如'sha1', 'md5', 'sha256', 'sha512'，具体而言，该模块提供了与openssl中提供的加密算法库相同的支持。
+	2. source: 需要加密的内容
+	3. password: 用于加密的密码
+	4. hex: 加密内容的输出进制，包含'binary','base64'和'hex'
 
 ## 创建官方邮箱
 + gitnovel@qq.com
