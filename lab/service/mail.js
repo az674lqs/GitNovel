@@ -1,15 +1,18 @@
-variable nodemailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 
 /**
  * send email with mailOptions and smtpConfig
 **/
-function sendEmail(mailOptions,smtpConfig,callback){
+function sendEmail(mailOptions,smtpConfig){
     // create reusable transporter object using the default SMTP transport
     var transporter = nodemailer.createTransport(smtpConfig);
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info){
-        if(arguments.length == 3)
+        //if has the callback function
+        if(arguments.length == 3){
+            callback = arguments[2];
             callback(error,info);
+        }
     });
 }
 

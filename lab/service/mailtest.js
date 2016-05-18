@@ -1,5 +1,4 @@
-var mail = require('./mail.js');
-
+var mail = require('./Mail.js');
 
 // when the user change, you should change this config
 var mailserver = 'smtp-mail.outlook.com';
@@ -11,7 +10,7 @@ var smtpConifg = mail.createSmtpConfig(mailserver,port,user,pass);
 // setup e-mail data with unicode symbols
 var from = '"GitNovel Official Service" ' + user;
 var to = "hyang.cn@outlook.com, 250553694@qq.com";
-var subject = 'Test of our mail helper: callback ';
+var subject = 'Test of our mail helper: callback arg2 ';
 var text = 'Hello world，wow!!!';
 var html = '<b>Html  body file 🐴</b>';
 var mailOptions = mail.createMailOptions(from,to,subject,text,html);
@@ -27,5 +26,5 @@ function mailCallback(error,info){
 
 // send email 
 mail.sendEmail(mailOptions,smtpConifg,mailCallback);    
-// mail.sendEmail(mailOptions,smtpConifgs);
+mail.sendEmail(mailOptions,smtpConifg);
 
