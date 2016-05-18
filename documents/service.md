@@ -8,7 +8,87 @@
 + 扫描目标文件夹发现更新（git是否已经实现了？？）
 
 
+## 发送邮件
 
+<b>描述：</b>
+
+使用[<b>nodemailer</b>](http://nodemailer.com)包来进行邮件发送.
+
++ 模块： `./service/Mail.js`
++ 方法：
+	1. 创建内容变量
+		
+		```
+		createMailOptions(from,to,subject,text,html);
+		```
+		变量：	
+		
+		a. from: 发件方名称	
+		b. to: 接受方邮件地址，以“,”分隔多个邮件	
+		c. subject: 邮件主题	
+		d. text: 邮件正文		
+		e. html: 邮件之后的html部分
+	2. 创建邮件发送相关变量
+		
+		```
+		createSmtpConfig(mailserver,port,user,pass);
+		```
+		变量：	
+		
+		a. mailserver: 邮件服务器url		
+		b. port: 端口		
+		c. user: 发送邮件邮箱地址	
+		d. user: 发送邮件邮箱密码
+	3. 发送邮件
+	
+		```
+		sendEmail(mailOptions,smtpConifg,mailCallback); 
+		```
+		or 
+		
+		```
+		sendEmail(mailOptions,smtpConifg);		
+		```
+		
+		变量：	
+		
+		a. mailOptions: 内容变量		
+		b. smtpConifg: 邮件发送相关变量		
+		c. mailCallback: 发送结果处理模块，例如
+		
+		```
+// callback function for the result of send mail
+function mailCallback(error,info){
+    if(error){
+        console.log("Error: Mail send error");
+    }
+    else
+        console.log("Mail send success");
+}
+		```	
++ 用法：
+	
+	```
+// load module
+var mail = require('./Mail.js');
+...
+// create the smtp config variable
+var smtpConifg = mail.createSmtpConfig(mailserver,port,user,pass);
+...
+// create the mail options (content of email)
+var mailOptions = mail.createMailOptions(from,to,subject,text,html);
+// callback function for the result of send mail
+function mailCallback(error,info){
+    if(error){
+        console.log("Error: Mail send error");
+    }
+    else
+        console.log("Mail send success");
+}
+// send email 
+mail.sendEmail(mailOptions,smtpConifg,mailCallback);    
+mail.sendEmail(mailOptions,smtpConifg);
+	```
 
 
 
