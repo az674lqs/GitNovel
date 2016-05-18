@@ -1,4 +1,4 @@
-var mail = require('./Mail.js');
+var mail = require('../service/Mail.js');
 
 // when the user change, you should change this config
 var mailserver = 'smtp-mail.outlook.com';

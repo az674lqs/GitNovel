@@ -1,5 +1,5 @@
-var decipher = require("./Decipher");
-var cipher = require("./Cipher");
+var decipher = require("../service/Decipher");
+var cipher = require("../service/Cipher");
 /** 
 	for: manual test for decipher service
 	end: pass
