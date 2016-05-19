@@ -8,8 +8,8 @@
 
 <b>Todo:</b>
 
++ 配置文件载入
 + 执行git命令
-+ 配置文件
 + 扫描目标文件夹发现更新（git是否已经实现了？？）
 
 
@@ -19,6 +19,7 @@
 
 使用[<b>nodemailer</b>](http://nodemailer.com)包来进行邮件发送.
 
++ 功能：设置邮件smtp信息和邮件内容，并发送
 + 模块： `./service/Mail.js`
 + 方法：
 	1. 创建内容变量
@@ -106,6 +107,7 @@ crypto
 
 <b>加密：</b>
 
++ 功能: 对一个文本数据根据秘钥进行加密
 + 模块： `./service/Cipher.js`
 + 方法：
 
@@ -131,6 +133,7 @@ console.log("encrypted: " + encrypted);
 
 <b>解密：</b>
 
++ 功能: 对一个文本数据根据秘钥进行解密
 + 模块： `./service/Decipher.js`
 + 方法：
 
@@ -153,6 +156,44 @@ var format = 'hex';
 var decrypted = decipher.decipherHelper(algorithm,encrypted,password,format);
 console.log("decrypted: " + decrypted);
 	```
+	
+## 配置文件载入
+
+<b>配置文件格式：</b>
+
+配置文件以k,v的形势存储。
+
+```
+...
+user:gitnovel
+pass:123
+...
+```
+
++ 功能: 载入上诉kv格式的配置文件属性，返回map对象
++ 模块： ``` ./service/AttributeLoad.js ```
++ 方法: 
+
+``` 
+attributeLoad.laodAttributes(filename,encode);
+```
+
++ 参数:
+	1. filenmae: 配置文件路径
+	2. encode: 编码方式
++ 用法: 
+
+```
+var attributeLoad = require("../service/AttributeLoad");
+
+var filename = "../data/test.kv";
+var encode = "utf-8";
+var load = attributeLoad.laodAttributes;
+
+console.log(load(filename,encode));
+```
+
+
 
 ## 创建官方邮箱
 + gitnovel@qq.com
