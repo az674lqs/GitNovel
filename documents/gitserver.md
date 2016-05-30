@@ -10,7 +10,7 @@
 4. 使用gitolite管理项目；
 
 此外，相关配置如下：
-<table border="1">
+<table>
 <tr>
 <td>属性</td>
 <td>值</td>
