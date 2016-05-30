@@ -8,6 +8,7 @@
 2. 在CentOS上安装Git Server;
 3. 创建用户；
 4. 使用gitolite管理项目；
+5. Clone到本地；
 
 此外，相关配置如下：
 <table>
