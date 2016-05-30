@@ -126,8 +126,40 @@
 	```
 	ip/domain: 服务器的IP地址或者域名，如41.118.71.213; <br>
 	port: 端口号；<br>
-	gitolite-admin这个项目中包含conf和keydir这两个目录，conf/gitolite.conf 是添加用户/仓库的配置, keydir 是放对应用户的公钥.
-2. a
+	gitolite-admin这个项目中包含conf和keydir这两个目录，conf/gitolite.conf 是添加用户/仓库的配置, keydir是放对应用户的公钥.<br>
+	其中，```gitolite.conf```的格式为：
+	
+	```
+	repo [repoename] # 为一个库的实体，[repoename]为库的名称
+	    RW+(权限)     =   admin（用户名，需要已经建立）
+	```
+	
+	如下是一个demo，@all表示全部用户，但是已经是指已经在服务器上注册了的用户，而不是任意未知的用户。
+	
+	```
+	repo gitolite-admin
+	    RW+     =   admin
+	    
+	repo testing
+	    RW+     =   @all
+	    
+	repo myrepos
+	    RW+     =   admin
+	
+	repo repotest
+	    RW+     =   hao
+	    RW+     =   admin
+	```
+	
+2. 根据需要，创建用户，然后修改```gitolite.conf```文件
+3. 将修改提交到服务器
+	
+	```
+	git add gitolite.conf
+	git commit -m "gitolite.conf update"
+	git push #提交修改
+	```
+	这样，权限才修改成功。
 
 
 ****
