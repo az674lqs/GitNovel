@@ -122,7 +122,7 @@
 1. 将用于管理gitolite的项目clone到本地
 	
 	```
-	git clone ssh://git@[ip/domain]:[port]/gitolite-admin.git #由于ssh不是走的默认端口22，需要这样才能clone代码
+	$git clone ssh://git@[ip/domain]:[port]/gitolite-admin.git #由于ssh不是走的默认端口22，需要这样才能clone代码
 	```
 	ip/domain: 服务器的IP地址或者域名，如41.118.71.213; <br>
 	port: 端口号；<br>
@@ -155,12 +155,47 @@
 3. 将修改提交到服务器
 	
 	```
-	git add gitolite.conf
-	git commit -m "gitolite.conf update"
-	git push #提交修改
+	$git add gitolite.conf
+	$git commit -m "gitolite.conf update"
+	$git push #提交修改
 	```
 	这样，权限才修改成功。
+4. 在```gitolite.conf```文件中添加一个repo实体，gitolite就会自动生成对应的repo。
 
+## Clone到本地
+
+1. 执行如下代码就可以clone代码到本地
+	
+	```
+	$git clone ssh://git@[ip/domain]:[port]/gitolite-admin.git #由于ssh不是走的默认端口22，需要这样才能clone代码
+	```
+2. 可能会报警告如下：
+	
+	```
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+    LANGUAGE = (unset),
+    LC_ALL = (unset),
+    LANG = "en_US.UTF-8"
+    ...
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+	```
+	为了解决这个问题，在你使用的sh到配置文件（bash的~/.bashrc，zsh的~/.zshrc）中加入一行代码。
+	```
+	$vi ~/.zshrc #我用的zsh
+	```
+	然后在文件末尾，放入
+	
+	```
+	export LC_ALL=C
+	```，
+	然后执行修改后的sh
+	
+	```
+	source .zshrc
+	```
+3. Clone到本地后就可以进行各自操作了
 
 ****
 
